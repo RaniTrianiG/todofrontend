@@ -8,7 +8,8 @@ class lists extends Component{
             <Container>
               <Header>
                   <Left>
-                    <Icon name="ios-menu" onPress={() => this.props.navigation.openDrawer()}/>
+                    <Icon style={{color: 'white', right: 100}} name="ios-menu" 
+                    onPress={() => this.props.navigation.openDrawer()}/>
                   </Left>
               </Header>
                 <Content contentContainerStyle={{

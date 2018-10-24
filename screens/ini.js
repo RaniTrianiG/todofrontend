@@ -3,21 +3,15 @@ import {View, Text, StyleSheet, Image} from 'react-native';
 import {Icon, Button, Container, Header, Content, Left} from 'native-base';
 
 class ini extends Component{
-
-    static navigationOptions = {
-        drawerIcon :(
-          <Image source={require('./images/home.png')}
-          style={{height:24, width: 24}} />
-        )
-      }
-
     render() {
         return (
             <Container>
               <Header>
                   <Left>
-                    <Icon name="ios-menu" onPress={() => this.props.navigation.openDrawer()}/>
+                    <Icon style={{color: 'white', right: 0}} name="ios-menu" 
+                    onPress={() => this.props.navigation.openDrawer()}/>
                   </Left>
+                  <Text style={{color:'white'}}>Todo App</Text>
               </Header>
                 <Content contentContainerStyle={{
                   flex: 1,

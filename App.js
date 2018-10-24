@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Platform, View, Text, Image, StyleSheet} from 'react-native';
 import {createStackNavigator, DrawerItems} from 'react-navigation';
 import { DrawerNavigator } from 'react-navigation';
-import {Container, Content, Header, Body, Icon} from 'native-base';
+import {Container, Content, Header, Body, Icon, Thumbnail} from 'native-base';
 
 
 import login from './screens/login';
@@ -15,7 +15,7 @@ import ini from './screens/ini';
 class App extends Component {
   render() {
     return (
-      <Root />
+      <MyApp />
     );
   }
 }
@@ -30,41 +30,43 @@ const Root = createStackNavigator ({
   initialRouteName: 'splash'
 })
 
-// const CustomDrawerContentComponent = (props) => (
-//   <Container>
-//     <Header
-//     style={{height:200, backgroundColor: 'white'}}>
-//       <Body>
-//         <Image 
-//         style={style.drawerImage}
-//         source={require('./images/todoapp.png')} />
-//       </Body>
-//     </Header>
-//     <Content>
-//       <DrawerItems {...props} />
-//     </Content>
-//   </Container>
-// )
+const CustomDrawerContentComponent = (props) => (
+  <Container>
+    <Header
+    style={{height:163, backgroundColor: 'white'}}>
+      <Body>
+      <View style={{right: 10}}>
+		    <Image
+		      source={require('./images/logo.jpg')} 
+		    />
+        <View style={{position: 'absolute', top: 80, left: 10}}>
+          <Thumbnail style={{width:70, height:70}}
+          source={require('./images/todo-app.png')} />
+        </View>
+        <View style={{position: 'absolute', top: 110, left: 90, fontSize: 30}}>
+          <Text style={{color:'white'}}>Application Todo App</Text>
+        </View>
+      </View>
+      </Body>
+    </Header>
+    <Content>
+      <DrawerItems {...props} />
+    </Content>
+  </Container>
+)
 
-// const MyApp = DrawerNavigator({
-//   lists: {
-//     screen: lists
-//   },
-//   ini: {
-//     screen: ini
-//   }
-// }, {
-//   contentComponent: CustomDrawerContentComponent,
-//   drawerCloseRoute: 'DrawerClose',
-//   drawerToggleRoute: 'DrawerToggle'
-// })
+const MyApp = DrawerNavigator({
+  lists: {
+    screen: lists
+  },
+  ini: {
+    screen: ini
+  }
+}, {
+  initialRouteName: 'ini',
+  contentComponent: CustomDrawerContentComponent,
+  drawerCloseRoute: 'DrawerClose',
+  drawerToggleRoute: 'DrawerToggle'
+})
 
-export default Root;
-
-// const style = StyleSheet.create({
-//   drawerImage: {
-//     height: 150,
-//     width: 150,
-//     borderRadius: 75
-//   }
-// })
+export default App;

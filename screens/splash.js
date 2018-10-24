@@ -20,7 +20,7 @@ export default class splash extends Component {
           <Card>
             <CardItem>
               <Left>
-                {/* <Thumbnail source = {require ('../images/todoapp.png')} /> */}
+                <Thumbnail source = {require ('../images/todoapp.png')} />
                 <Body>
                   <Text style={{color: 'black'}} note>Organize Your Todo List Here!</Text>
                 </Body>
