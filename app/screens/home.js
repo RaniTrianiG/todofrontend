@@ -1,0 +1,31 @@
+import React, {Component} from 'react';
+import {View, Text, StyleSheet} from 'react-native';
+import {Icon, Button, Container, Header, Content, Left, Title, Body} from 'native-base';
+
+class Home extends Component{
+  render() {
+    return (
+      <Container>
+        <Header>
+          <Left>
+            <Button transparent onPress={() => this.props.navigation.openDrawer()}>
+              <Icon style={{color: 'white'}} name="ios-menu" />
+            </Button>
+          </Left>
+          <Body>
+            <Title>Title</Title>
+          </Body>
+        </Header>
+        <Content contentContainerStyle={{
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}>
+          <Text>Ini halaman Home</Text>
+        </Content>
+      </Container>
+    )
+  }
+}
+
+export default Home;
