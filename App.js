@@ -8,27 +8,23 @@ import {Container, Content, Header, Body, Icon, Thumbnail} from 'native-base';
 import login from './screens/login';
 import splash from './screens/splash';
 import register from './screens/register';
-import dashboard from './screens/dashboard';
-import lists from './screens/lists';
-import ini from './screens/ini';
+import Home from './screens/home';
+import Lists from './screens/lists';
+import Settings from './screens/settings';
+import create from './screens/create';
+
+import store from './components/store/store';
+import { Provider } from 'react-redux';
 
 class App extends Component {
   render() {
     return (
-      <MyApp />
+      <Provider store={store}>
+        <MyApp />
+      </Provider>
     );
   }
 }
-
-const Root = createStackNavigator ({  
-  splash: splash,
-  login: login, 
-  register: register,
-  dashboard: dashboard,
-  ini: ini
-},{
-  initialRouteName: 'splash'
-})
 
 const CustomDrawerContentComponent = (props) => (
   <Container>
@@ -49,21 +45,39 @@ const CustomDrawerContentComponent = (props) => (
       </View>
       </Body>
     </Header>
-    <Content>
+    <Content style={{backgroundColor: '#4B5E65', color: 'white'}}>
       <DrawerItems {...props} />
     </Content>
   </Container>
 )
 
 const MyApp = DrawerNavigator({
-  lists: {
-    screen: lists
+  home: {
+    screen: Home,
+    navigationOptions: {
+    drawerLabel: () =>(<Text style={{color: 'white'}}>Home</Text>),
+    drawerIcon: () => (<Icon name="home" size={18} style={{ color: "white" }} />) 
+    }
   },
-  ini: {
-    screen: ini
+  lists: {
+    screen: Lists,
+    navigationOptions: {
+      drawerLabel: () => (<Text style={{color: 'white'}}>Lists</Text>),
+      drawerIcon: () => (<Icon name="list" size={18} style={{ color: "white" }} />) 
+    }
+  },
+  settings: {
+    screen : Settings,
+    navigationOptions: { 
+      drawerLabel: () => (<Text style={{color: 'white'}}>Settings</Text>),
+      drawerIcon: () => (<Icon name="settings" size={18} style={{color: "white"}} />)
+    }
+  },
+  create: {
+    screen: create,
   }
 }, {
-  initialRouteName: 'ini',
+  initialRouteName: 'home',
   contentComponent: CustomDrawerContentComponent,
   drawerCloseRoute: 'DrawerClose',
   drawerToggleRoute: 'DrawerToggle'
