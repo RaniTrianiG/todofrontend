@@ -1,3 +1,4 @@
+import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { DrawerItems } from 'react-navigation';
 import { DrawerNavigator } from 'react-navigation';
@@ -10,9 +11,9 @@ const MyDrawer = (props) => (
     <Header style={{height:163, backgroundColor: 'white'}}>
       <Body>
         <View style={{right: 10}}>
-          <Image source={require('./app/images/logo.jpg')} />
+          <Image source={require('../images/logo.jpg')} />
           <View style={{position: 'absolute', top: 80, left: 10}}>
-            <Thumbnail style={{width:70, height:70}} source={require('./app/images/todo-app.png')} />
+            <Thumbnail style={{width:70, height:70}} source={require('../images/todo-app.png')} />
           </View>
           <View style={{position: 'absolute', top: 110, left: 90, fontSize: 30}}>
             <Text style={{color:'white'}}>Application Todo App</Text>
