@@ -1,72 +1,33 @@
-import React, {Component} from 'react';
-import {Platform, View, Text, Image, StyleSheet} from 'react-native';
-import {createStackNavigator, DrawerItems} from 'react-navigation';
-import { DrawerNavigator } from 'react-navigation';
-import {Container, Content, Header, Body, Icon, Thumbnail} from 'native-base';
+import React, { Component } from 'react';
+import DrawerNavigator from './app/screens/drawerNavigator';
 
+//============== useless -- delete aja
+// import login from './screens/login';
+// import splash from './screens/splash';
+// import register from './screens/register';
+// import dashboard from './app/screens/dashboard';
 
-import login from './screens/login';
-import splash from './screens/splash';
-import register from './screens/register';
-import dashboard from './screens/dashboard';
-import lists from './screens/lists';
-import ini from './screens/ini';
+// const Root = createStackNavigator ({  
+//   splash: splash,
+//   login: login, 
+//   register: register,
+//   dashboard: dashboard,
+//   ini: ini
+// },{
+//   initialRouteName: 'splash'
+// })
+//============ useless
+//
+// Note: btw stackNavigator digunakan untuk perpindahan screen.
+//       jadi kalo tombol B ditekan, maka muncul seperti layer / screen baru yang menyelimuti screen A..
+//       beda dengan drawerNavigator, dia cuman berganti content, letak header & drawer tetap sama... 
 
 class App extends Component {
   render() {
     return (
-      <MyApp />
+      <DrawerNavigator />
     );
   }
 }
-
-const Root = createStackNavigator ({  
-  splash: splash,
-  login: login, 
-  register: register,
-  dashboard: dashboard,
-  ini: ini
-},{
-  initialRouteName: 'splash'
-})
-
-const CustomDrawerContentComponent = (props) => (
-  <Container>
-    <Header
-    style={{height:163, backgroundColor: 'white'}}>
-      <Body>
-      <View style={{right: 10}}>
-		    <Image
-		      source={require('./images/logo.jpg')} 
-		    />
-        <View style={{position: 'absolute', top: 80, left: 10}}>
-          <Thumbnail style={{width:70, height:70}}
-          source={require('./images/todo-app.png')} />
-        </View>
-        <View style={{position: 'absolute', top: 110, left: 90, fontSize: 30}}>
-          <Text style={{color:'white'}}>Application Todo App</Text>
-        </View>
-      </View>
-      </Body>
-    </Header>
-    <Content>
-      <DrawerItems {...props} />
-    </Content>
-  </Container>
-)
-
-const MyApp = DrawerNavigator({
-  lists: {
-    screen: lists
-  },
-  ini: {
-    screen: ini
-  }
-}, {
-  initialRouteName: 'ini',
-  contentComponent: CustomDrawerContentComponent,
-  drawerCloseRoute: 'DrawerClose',
-  drawerToggleRoute: 'DrawerToggle'
-})
 
 export default App;
